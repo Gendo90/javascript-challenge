@@ -18,7 +18,11 @@ d3.select("#filter-btn").on("click", function () {
     console.log(filter_date)
 
     let results = data.filter(a => a.datetime === filter_date)
+    //empty the table body of all previous elements for each click
+    //prevents code from appending more elements upon different filters
+    d3.select("tbody").html("")
     let table_body = d3.select("tbody")
+    
 
     for (let i = 0; i<results.length; i++) {
         let curr_row = table_body.append("tr")
