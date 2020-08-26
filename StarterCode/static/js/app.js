@@ -11,6 +11,10 @@ d3.select("#filter-btn").on("click", function () {
     d3.event.preventDefault();
 
     let filter_date =  d3.select("#datetime").property("value")
+    if(filter_date.length === 0) {
+        filter_date = d3.select("#datetime").property("placeholder")
+    }
+
     console.log(filter_date)
 
     let results = data.filter(a => a.datetime === filter_date)
