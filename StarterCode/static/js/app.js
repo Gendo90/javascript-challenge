@@ -48,18 +48,13 @@ addTable(data)
 d3.select("#filter-btn").on("click", function () {
     d3.event.preventDefault();
 
-    let filter_date =  d3.select("#datetime").property("value")
-    if(filter_date.length === 0) {
-        filter_date = d3.select("#datetime").property("placeholder")
-    }
-
-    let results = data.filter(a => a.datetime === filter_date)
+    let results = data
 
     //filter the data based on other filters besides date - include all items if
     //no there is no input for a particular filter
 
     // Only include items for form elements present for filtering!
-    skipped_props = new Set(["datetime", "durationMinutes", "comments"])
+    skipped_props = new Set(["durationMinutes", "comments"])
 
     for (let prop in data[0]) {
         
